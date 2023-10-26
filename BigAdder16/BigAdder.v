@@ -16,7 +16,6 @@ wire [3:0] c_back;
 assign So = a_in ^ b_in ^ c_out;
 
 SmallAdder sa0(
-	.clk  	(clk),
 	.c_in 	(1'b0),
 	.p_in 	(p_in[3:0]),
 	.g_in 	(g_in[3:0]),
@@ -26,7 +25,6 @@ SmallAdder sa0(
 );
 
 SmallAdder sa1(
-	.clk  	(clk),
 	.c_in 	(c_back[1]),
 	.p_in 	(p_in[7:4]),
 	.g_in 	(g_in[7:4]),
@@ -36,7 +34,6 @@ SmallAdder sa1(
 );
 
 SmallAdder sa2(
-	.clk  	(clk),
 	.c_in 	(c_back[2]),
 	.p_in 	(p_in[11:8]),
 	.g_in 	(g_in[11:8]),
@@ -46,7 +43,6 @@ SmallAdder sa2(
 );
 
 SmallAdder sa3(
-	.clk  	(clk),
 	.c_in 	(c_back[3]),
 	.p_in 	(p_in[15:12]),
 	.g_in 	(g_in[15:12]),
@@ -56,7 +52,6 @@ SmallAdder sa3(
 );
 
 SmallAdder sa_Upper(
-	.clk  	(clk),
 	.c_in 	(a_in[0] & b_in[0]),
 	.p_in 	(Po),
 	.g_in 	(Go),

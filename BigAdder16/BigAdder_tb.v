@@ -24,19 +24,21 @@ end
 initial
 begin
 	clk = 0;
-	Ai = 16'b1111000011110000;
-	Bi = 16'b0000111100001111;
+	Ai = 16'hF0F0;
+	Bi = 16'h0F0F;
+	#50
+	Ai = 16'hE2A1;
+	Bi = 16'h1234;
+	#100
+	Ai = 16'h1E3B;
+	Bi = 16'h2024;
+	#150
+	Ai = 16'h2AFB;
+	Bi = 16'h0144;
+	#200 $finish;
 end
 
 always
 #5 clk = ~clk;
-
-initial
-begin
-	#100
-	Ai = 16'b1001001001001001;
-	Bi = 16'b0111001110011100;
-	#200 $finish;
-end
 
 endmodule
