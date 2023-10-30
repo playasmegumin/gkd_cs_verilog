@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "开始编译..."
+iverilog -o wave2 ./Carry4.v ./Carry16.v ./Carry64.v ./BigAdder64.v BigAdder64_tb.v
+echo "编译完成!"
+
+echo "生成波形..."
+vvp -n wave2 -lxt2
+# cp wave2.vcd wave2.lxt
+
+echo "打开GTKWAVE！但是是你自己来"
