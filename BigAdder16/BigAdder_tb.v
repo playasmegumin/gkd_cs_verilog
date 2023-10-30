@@ -8,7 +8,6 @@ wire [15:0] Co;
 wire [15:0] Sum;
 
 BigAdder b1(
-	.clk  (clk),
 	.a_in (Ai),
 	.b_in (Bi),
 	.c_out(Co),
@@ -29,13 +28,16 @@ begin
 	#50
 	Ai = 16'hE2A1;
 	Bi = 16'h1234;
-	#100
+	#50
 	Ai = 16'h1E3B;
 	Bi = 16'h2024;
-	#150
+	#50
 	Ai = 16'h2AFB;
 	Bi = 16'h0144;
-	#200 $finish;
+	#50
+	Ai = 16'h1234;
+	Bi = 16'h8765;
+	#50 $finish;
 end
 
 always

@@ -1,13 +1,12 @@
 module BigAdder(
-	input 	clk,
 	input	[15:0] a_in,
 	input	[15:0] b_in,
 	output	[15:0] c_out,
 	output	[15:0] So
 );
 
-wire [15:0] p_in = a_in | b_in;
-wire [15:0] g_in = a_in & b_in;
+wire [15:0] p_in = a_in | b_in;  // 这里是所有p和g的产生
+wire [15:0] g_in = a_in & b_in;  // 这里处理成内部线路，将a、b作为整个模块的输入
 
 wire [3:0] Po;
 wire [3:0] Go;
@@ -15,7 +14,7 @@ wire [3:0] c_back;
 
 assign So = a_in ^ b_in ^ c_out;
 
-SmallAdder sa0(
+Carry4 carry4_0(
 	.c_in 	(1'b0),
 	.p_in 	(p_in[3:0]),
 	.g_in 	(g_in[3:0]),
@@ -24,7 +23,7 @@ SmallAdder sa0(
 	.c_out	(c_out[3:0])
 );
 
-SmallAdder sa1(
+Carry4 carry4_1(
 	.c_in 	(c_back[1]),
 	.p_in 	(p_in[7:4]),
 	.g_in 	(g_in[7:4]),
@@ -33,7 +32,7 @@ SmallAdder sa1(
 	.c_out	(c_out[7:4])
 );
 
-SmallAdder sa2(
+Carry4 carry4_2(
 	.c_in 	(c_back[2]),
 	.p_in 	(p_in[11:8]),
 	.g_in 	(g_in[11:8]),
@@ -42,7 +41,7 @@ SmallAdder sa2(
 	.c_out	(c_out[11:8])
 );
 
-SmallAdder sa3(
+Carry4 carry4_3(
 	.c_in 	(c_back[3]),
 	.p_in 	(p_in[15:12]),
 	.g_in 	(g_in[15:12]),
@@ -51,7 +50,7 @@ SmallAdder sa3(
 	.c_out	(c_out[15:12])
 );
 
-SmallAdder sa_Upper(
+Carry4 carry4__Upper(
 	.c_in 	(a_in[0] & b_in[0]),
 	.p_in 	(Po),
 	.g_in 	(Go),

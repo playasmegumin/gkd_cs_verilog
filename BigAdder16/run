@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "开始编译..."
-iverilog -o wave ./SmallAdder.v ./BigAdder.v BigAdder_tb.v
+iverilog -o wave ./Carry4.v ./BigAdder.v BigAdder_tb.v
 echo "编译完成!"
 
 echo "生成波形..."
